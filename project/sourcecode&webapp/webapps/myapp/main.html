@@ -1,0 +1,123 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 3</title>
+<base target="_self">
+
+<script>
+function validate(){
+var regExp = /cms((\d){8})/g; 
+if(!regExp.test(document.myForm.updateinput.value)){
+alert('Invalid Airway bill no! \n\n Please enter a valid Airway bill no (e.g cms12345678)');
+return;
+}
+
+document.myForm.submit();
+}
+
+function validate2(){
+var regExp = /cms((\d){8})/g; 
+if(!regExp.test(document.myForm2.deleteinput.value)){
+alert('Invalid Airway bill no! \n\n Please enter a valid Airway bill no (e.g cms12345678)');
+return;
+}
+
+document.myForm2.submit();
+}
+
+
+
+</script>
+<script>
+function validatentn(){
+var ntnempty = document.myForm3.customerinput;
+if (ntnempty.value == "")
+    {
+        window.alert("Empty ntn no field.");
+        ntnempty.focus();
+        return false;
+    }
+document.myForm3.submit(); 
+}
+</script>
+
+</head>
+
+<body topmargin="0" leftmargin="0" link="#53524F" vlink="#53524F" alink="#53524F">
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="103%" id="AutoNumber1">
+  <tr>
+    <td width="71%">&nbsp;</td>
+    <td width="29%">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="247">
+      </form>
+      <tr>
+        <td width="100%" background="menu.gif" height="19"><b>
+        <font face="Comic Sans MS" size="2" color="#53524F">Delete Shipment:</font></b></td>
+      </tr>
+      <tr>
+       <form METHOD="GET" 
+      ACTION="http://localhost:8080/myapp/deleteshipservlet"
+      Name="myForm2" onsubmit="return false;">
+        <td width="100%" height="22"><INPUT TYPE="text" name="deleteinput" size="27"></td>
+      </tr>
+      <tr>
+        <td width="100%" height="27"><input type="submit" value="Delete" onClick='validate2();'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <input type="reset" value="Clear"></td>
+      </tr>
+      </form>
+      <tr>
+        <td width="100%" bgcolor="#F0F0F0" height="19">
+        <font size="1" face="Arial">Note: Please enter airway bill no</font><p>&nbsp;</p>
+        <p>&nbsp;</td>
+      </tr>
+      
+      <tr>
+        <td width="100%" background="menu.gif" height="19"><b>
+        <font face="Comic Sans MS" size="2" color="#53524F">Track Customer:</font></b></td>
+      </tr>
+      <form METHOD="GET" 
+      ACTION="http://localhost:8080/myapp/trackcustomerservlet"
+      Name="myForm3" target="_new" onsubmit="return false;">
+      <tr>
+        <td width="100%" height="16"><INPUT TYPE="text" name="customerinput" size="27"></td>
+      </tr>
+      
+      <tr>
+        <td width="100%" height="19"><input type="submit" value="Track" onClick='validatentn();'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <input type="reset" value="Clear"></td>
+      </tr>
+      
+      </form>
+      <tr>
+        <td width="100%" height="19" bgcolor="#F0F0F0">
+        <font size="1" face="Arial">Note: Please enter NTN no of company</font></td>
+      </tr>
+      
+      <tr>
+        <td width="100%" height="19" bgcolor="#F0F0F0">&nbsp;</td>
+      </tr>
+      
+      <tr>
+        <td width="100%" height="19" bgcolor="#F0F0F0">&nbsp;</td>
+      </tr>
+      
+      <tr>
+        <td width="100%" height="19" bgcolor="#F0F0F0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <p>&nbsp;</td>
+      </tr>
+      
+    </table>
+    </td>
+  </tr>
+</table>
+
+
+
+</body>
+
+</html>

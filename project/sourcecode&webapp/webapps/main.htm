@@ -1,0 +1,142 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 3</title>
+<base target="_self">
+<script>
+function validate(){
+var regExp = /cms((\d){8})/g; 
+if(!regExp.test(document.myForm.status.value)){
+alert('Invalid Airway bill no! \n\n Please enter a valid Airway bill no (e.g cms12345678)');
+return;
+}
+
+document.myForm.submit();
+}
+
+
+</script>
+<script>
+
+function validatentn(){
+var ntnempty = document.myForm2.customerinput;
+if (ntnempty.value == "")
+    {
+        window.alert("Empty ntn no field.");
+        ntnempty.focus();
+        return false;
+    }
+document.myForm2.submit(); 
+}
+
+</script>
+</head>
+
+<body topmargin="0" leftmargin="0" bgcolor="#FFFFFF">
+
+<table  cellpadding="0" cellspacing="0" style="border-collapse: collapse"  width="101%" id="AutoNumber1" height="313">
+  <tr>
+    <td width="100%" height="313" align="left" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="102%" id="AutoNumber2" height="237" bgcolor="#FFFFFF">
+      <tr>
+        <td width="72%" height="73" align="left" valign="top" bgcolor="#FFFFFF">
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber6" bgcolor="#FFFFFF">
+          <tr>
+            <td width="100%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="100%"><font color="#666666"><strong>
+        <font face="JI-Beasts" size="2">Our</font></strong><font size="2" face="JI-Beasts"><strong> 
+        Company Name CMS(Courier Mangement System)</strong></font></font><font face="Arial" size="2" color="#666666"><br>
+        </font><font size="2" color="#666666" face="Comic Sans MS">was first 
+        established in 1st Jan 2007 in Pakistan by a group of people who 
+        accomplished their careers in international air express industries and 
+        attained positions of very senior levels. Together, these people with 
+        business acumen provided wholesale courier services for international 
+        courier companies to enter into the European market as well as to help 
+        other Sub-Continent Regions having independent courier operators to 
+        venture overseas</font></td>
+          </tr>
+        </table>
+&nbsp;</td>
+        <td width="31%" height="73" align="left" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="110%" id="AutoNumber3" height="176" background="menu.gif" align="left">
+          <tr>
+            <td width="110%" height="22" bgcolor="#FFD321" background="menu.gif">
+            &nbsp;</td>
+          </tr>
+          <tr>
+            <td width="110%" height="153" align="left" valign="top" bgcolor="#FFD321" background="menu.gif">
+            <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5" align="left">
+              <tr>
+                <td width="100%"><b>
+            <font face="Comic Sans MS" size="2" color="#666666">Track Shipment here</font></b></td>
+              </tr>
+              <tr>
+                <td width="100%">
+<form METHOD="POST" 
+      ACTION="http://localhost:8080/myapp/trackservlet"
+      Name="myForm" onsubmit="return false;">
+<INPUT TYPE="text" NAME="status" size="20"></td>
+              </tr>
+              <tr>
+                <td width="100%">
+
+<INPUT TYPE="submit" value="Track" onClick='validate();'>
+<INPUT TYPE="reset" value="Clear"></td>
+              </tr>
+    </form>         
+              <tr>
+                <td width="100%">
+                <p align="left"><font face="Arial" size="1"><b><u>Note</u>: Please enter 
+bar code on your airway bill</b></font><b> </b></td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+      <tr>
+        <td width="72%" height="163" bgcolor="#FFFFFF">&nbsp;</td>
+        <td width="31%" height="163" bgcolor="#FFD321" background="menu.gif" align="left" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4" align="left">
+          <tr>
+          <form METHOD="POST" 
+      ACTION="http://localhost:8080/myapp/trackcustomerservlet"
+      Name="myForm2" target="_new" onsubmit="return false;">
+            <td width="100%"><b>
+            <font face="Comic Sans MS" size="2" color="#666666">Track Customer 
+            here:</font></b></td>
+          </tr>
+          <tr>
+            <td width="100%">
+
+<INPUT TYPE="text" NAME="customerinput" size="20"></td>
+          </tr>
+          <tr>
+            <td width="100%">
+
+<INPUT TYPE="submit" value="Track" onClick='validatentn();'>
+<INPUT TYPE="reset" value="Clear"></td>
+          </tr>
+          <tr>
+            <td width="100%">
+            <p align="left"><font face="Arial" size="1"><b><u>Note</u>: Please enter 
+            ntn&nbsp; # of your companyl</b></font><b> </b></td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+ </form>
+</body>
+
+</html>

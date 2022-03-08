@@ -1,0 +1,175 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Qoutation</title>
+<script>
+
+function mul(obj)
+{
+var a,b;
+a = parseInt(obj.form.elements['wt'].value) * parseInt(obj.form.elements['quote'].value);
+b=a*15/100;
+obj.value=a+b;
+if(obj.value == "NaN")
+{
+alert("Please enter valid numbers");
+}
+}
+
+var countryObj = new Array();
+
+function Country(name, cities){
+this.name = name;
+this.cities = cities;
+}
+function City(name, quote){
+this.name = name;
+this.quote = quote;
+}
+countryObj[countryObj.length] = new Country('Zona A', new Array(new City('Afghanistan', 200), new City('Bangladesh', 250
+), new City('Bhutan', 400),new City('Cyprus', 450),new City('Egypt', 450),new City('India', 200),new City('Iran', 250)
+,new City('Jordan', 450),new City('Kuwait', 450),new City('Maldives', 400),new City('Nepal', 400)
+,new City('Oman', 450),new City('Pakistan', 200),new City('Qatar', 450),new City('Saudia Arabia', 400),
+new City('Sudan', 300),new City('Syria', 450),new City('Thailand', 300),new City('UAE', 400)));
+
+countryObj[countryObj.length] = new Country('Zone B', new Array(new City('Algeria', 600), new City('Belgium', 400),new City('Finland', 450)
+,new City('Germany', 450),new City('Hongkong', 300),new City('Hungary', 550),new City('Iceland', 600),new City('Indonesia', 350)
+,new City('Ireland', 550),new City('Japan', 350),new City('Korea', 350),new City('Malaysia', 300),new City('Morocco', 400),new City('Netherland', 400),
+new City('Singapore', 300),new City('SouthAfrica', 550),new City('Sweden', 450),new City('Switzerland', 450),new City('Tunisia', 600),new City('UK', 550),new City('Zimbabwe', 550)));
+
+countryObj[countryObj.length] = new Country('Zone C', new Array(new City('Argentina', 675), new City('Austria', 625), new City('Botswana', 625),new City('Ghana', 625)
+,new City('Italy', 650),new City('Philippines',650),new City('Romania', 650),new City('Russia', 650),new City('Senegal', 675),
+new City('Togo', 675),new City('Turkey', 650)));
+
+countryObj[countryObj.length] = new Country('Zone D', new Array(new City('Australia', 750), new City('Bolivia', 725), new City('Canada', 700),new City('CostaRica', 725)
+,new City('Cuba', 750),new City('Guatemala', 725),new City('Newzealand', 700),new City('USA', 700)));
+
+function init(){
+var countrySelObj = document.getElementById('country');
+countrySelObj.options[0] = new Option('Select Zone', 'Select Country');
+for(x=1;x<=countryObj.length;x++){
+countrySelObj.options[x] = new Option(countryObj[x-1].name, countryObj[x-1].name);
+}
+countrySelObj.selectedIndex = 0;
+loadCity();
+}
+
+function loadCity(){
+var countrySelObj = document.getElementById('country');
+var citySelObj = document.getElementById('city');
+if(countrySelObj.selectedIndex == 0){
+citySelObj.options.length = 0;
+citySelObj.options[0] = new Option('Select Country', 'Select Country');
+document.getElementById('quote').value = '';
+}else{
+var selCountry = countrySelObj.options[countrySelObj.selectedIndex].text;
+for(x=0;x<countryObj.length;x++){
+if(countryObj[x].name == selCountry){
+citySelObj.options.length = 0;
+citySelObj.options[0] = new Option('Select', 'Select');
+for(y=1;y<=countryObj[x].cities.length;y++){
+citySelObj.options[y] = new Option(countryObj[x].cities[y-1].name, countryObj[x].cities[y-1].quote);
+}
+citySelObj.selectedIndex = 0;
+document.getElementById('quote').value = '';
+break;
+}
+}
+}
+}
+
+function setQuote(){
+var countryId = document.getElementById('country').selectedIndex;
+var cityId = document.getElementById('city').selectedIndex;
+if(countryId != 0 && cityId != 0){
+document.getElementById('quote').value = countryObj[countryId - 1].cities[cityId - 1].quote
+}else{
+document.getElementById('quote').value = '';
+}
+}
+</script>
+</head>
+
+<body onload='init();'>
+<br>
+<form METHOD="POST" Name="myForm" onsubmit='return false;'>
+<div align="center">
+  <center>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="100%">
+    <div align="center">
+      <center>
+      <table border="1" cellpadding="2" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="50%" id="AutoNumber2" bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0">
+        <tr>
+          <td width="100%" background="menu.gif">
+          <p align="center"><u><font face="Comic Sans MS" color="#666666">
+          Shipment Calculation</font></u></td>
+        </tr>
+        <tr>
+          <td width="100%" align="center"><font color="#666666" face="Comic Sans MS" size="2">Select 
+    Zone<b> :&nbsp;&nbsp;&nbsp; </b>
+          </font>
+<select id='country' onChange='loadCity();'>
+</select></td>
+        </tr>
+        <tr>
+          <td width="100%" align="center"><font color="#666666" face="Comic Sans MS" size="2">Select 
+    Country<b> : </b>
+          </font>
+<select id='city' onChange='setQuote();'>
+</select></td>
+        </tr>
+        <tr>
+          <td width="100%">
+          <p align="center"><font face="Comic Sans MS" size="2" color="#666666">
+          Rate(in pak rs) :&nbsp;&nbsp; </font><font face="Arial" color="#666666"><b>
+            <INPUT TYPE="text" name="quote" size="12" readonly='true' onClick='alert("Warning!!\n\nYou donot change this Rate.");'></b></font></td>
+        </tr>
+        <tr>
+          <td width="100%">
+          <p align="center"><font face="Comic Sans MS" size="2" color="#666666">
+          Weigth(in kg) :&nbsp;&nbsp;&nbsp;&nbsp; </font><font face="Arial" color="#666666"><b>
+            <INPUT TYPE="text" name="wt" size="12"></b></font></td>
+        </tr>
+        <tr>
+          <td width="100%">
+          <p align="center"><font face="Comic Sans MS" size="2" color="#666666">
+          Total Amount :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font face="Arial" color="#666666"><b>
+            <INPUT TYPE="text" name="at" size="12"  onfocus='mul(this)' ></b></font></td>
+        </tr>
+      </table>
+      </center>
+    </div>
+    </td>
+  </tr>
+  </table>
+
+  </center>
+</div>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3">
+  <tr>
+      <td width="100%"><b><i><font face="Comic Sans MS" size="2">Important:</font></i></b></td>
+    </tr>
+  <tr>
+      <td width="100%"><font face="Arial" size="2" color="#666666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &#9658; 20% discount for registered customer.</font></td>
+    </tr>
+  <tr>
+      <td width="100%"><font face="Arial" size="2" color="#666666">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &#9658; GST 15% included on above amount.</font></td>
+    </tr>
+  <tr>
+    <td width="100%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</form>
+</body>
+
+</html>
